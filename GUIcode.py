@@ -7,22 +7,25 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 screen = Tk()
-screen.title("Password Generator")
-screen.geometry('600x400')
+screen.title("Health Monitoring System")
+screen.geometry('600x600')
 screen.configure(background="bisque")
 
 def func():
-    app = QApplication(sys.argv)
-    w = QWidget()
-    b = QLabel(w)
-    b.setText("Hello World!")
-    w.setGeometry(100,100,200,50)
-    b.move(50,20)
-    w.setWindowTitle("PyQt5")
-    w.show()
-    sys.exit(app.exec_())
-    if __name__ == '__main__':
-        window()
+    screen = Tk()
+    screen.title("Student Data")
+    screen.geometry('600x600')
+    myvar = c1.get()
+    if myvar.isdigit() == True:
+        if len(str((myvar))) <= 10 and len(str((myvar))) > 9:
+            ta = Label(screen, text='Displaying Student Data', font=('Arial', 25), fg='red', background="bisque")
+            ta.place(x=120, y=0)
+        else:
+            tb = Label(screen, text='The entered Student ID is Invalid', font=('Arial', 24), background="bisque")
+            tb.place(x=70, y=300)
+    else:
+        tb = Label(screen, text='The entered Student ID is Invalid', font=('Arial', 24), background="bisque")
+        tb.place(x=70, y=300)
 
 
 sc1 = StringVar('')
@@ -35,11 +38,10 @@ il.place(x=310, y=85)
 t3 = Label(screen, text='OR', font=('Arial', 14),  fg='red', background="bisque")
 t3.place(x=260, y=155)
 t4 = Label(screen, text='Enter Student ID: ', font=('Arial', 14),  fg='black', background="bisque")
-t4.place(x=145, y=215)
+t4.place(x=135, y=215)
 c1 = Entry(screen, font=('Arial', 14), width=10)
 c1.place(x=310, y=213)
-
-b = Button(screen, text='OK', font=('Arial', 14), fg='red', background="white")
-b.place(x=340, y=260)
+b = Button(screen, text='OK', font=('Arial', 14), fg='red', background="white", command = func)
+b.place(x=430, y=210)
 
 screen.mainloop()
