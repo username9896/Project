@@ -24,16 +24,16 @@ def func():
             ta = Label(screen1, text='Displaying Student Data', font=('Arial', 26), fg='red', background="bisque")
             ta.place(x=120, y=0)
             
-            frame = Frame(screen1, width=600, height=400)
-            frame.pack()
-            frame.place(anchor='center', relx=0.5, rely=0.5)
-
-            # Create an object of tkinter ImageTk
-            img = ImageTk.PhotoImage(Image.open("images.jpg"))
-
-            # Create a Label Widget to display the text or Image
-            label = Label(image = img)
-            label.pack()
+#             frame = Frame(screen1, width=600, height=400)
+#             frame.pack()
+#             frame.place(anchor='center', relx=0.5, rely=0.5)
+# 
+#             # Create an object of tkinter ImageTk
+#             img = ImageTk.PhotoImage(Image.open("images.jpg"))
+# 
+#             # Create a Label Widget to display the text or Image
+#             label = Label(image = img)
+#             label.pack()
             
             
             
@@ -69,33 +69,89 @@ def start():
     screen.geometry('600x600')
     tq = Label(screen, text='Sensor 1:', font=('Arial', 20), fg='red', background="bisque")
     tq.place(x=50, y=150)
-    iq = Button(screen, text='start',font=('Arial', 16), fg='red', background="white")
+    iq = Button(screen, text='start',font=('Arial', 16), fg='red', background="white", command = Communicate)
     iq.place(x=200, y=150)
     tq = Label(screen, text='Sensor Data:', font=('Arial', 20), fg='red', background="bisque")
     tq.place(x=400, y=150)
     tw = Label(screen, text='Sensor 2: ', font=('Arial', 20), fg='red', background="bisque")
     tw.place(x=50, y=200)
-    iw = Button(screen, text='Start',font=('Arial', 16), fg='red', background="white")
+    iw = Button(screen, text='Start',font=('Arial', 16), fg='red', background="white", command = Communicate1)
     iw.place(x=200, y=200)
     tq = Label(screen, text='Sensor Data:', font=('Arial', 20), fg='red', background="bisque")
     tq.place(x=400, y=200)
     te = Label(screen, text='Sensor 3:', font=('Arial', 20), fg='red', background="bisque")
     te.place(x=50, y=250)
-    ie = Button(screen, text='Start',font=('Arial', 16), fg='red', background="white")
+    ie = Button(screen, text='Start',font=('Arial', 16), fg='red', background="white", command = Communicate2)
     ie.place(x=200, y=250)
     tq = Label(screen, text='Sensor Data:', font=('Arial', 20), fg='red', background="bisque")
     tq.place(x=400, y=250)
-    tr = Label(screen, text='Sensor 4: ', font=('Arial', 20), fg='red', background="bisque")
+    tr = Label(screen, text='Sensor 4: ', font=('Arial', 20), fg='red', background="bisque", command = Communicate3)
     tr.place(x=50, y=300)
     ir = Button(screen, text='Start',font=('Arial', 16), fg='red', background="white")
     ir.place(x=200, y=300)
     
+def Addnew():
+    screen = Tk()
+    screen.title("Student Checkup")
+    screen.geometry('600x600')
+    ta = Label(screen, text='Add New Student Data', font=('Arial', 26), fg='red', background="bisque")
+    ta.place(x=120, y=0)
+    tr = Label(screen, text='Enter Student Name: ', font=('Arial', 20), fg='red', background="bisque")
+    tr.place(x=30, y=100)
+    c1 = Entry(screen, font=('Arial', 20), width=10)
+    c1.place(x=350, y=100)
+    b = Button(screen, text='OK', font=('Arial', 20), fg='red', background="white", command = Senddata)
+    b.place(x=520, y=100)
+    tr = Label(screen, text='Enter Student ID: ', font=('Arial', 20), fg='red', background="bisque")
+    tr.place(x=30, y=150)
+    c1 = Entry(screen, font=('Arial', 20), width=10)
+    c1.place(x=350, y=150)
+    b = Button(screen, text='OK', font=('Arial', 20), fg='red', background="white", command = Senddata)
+    b.place(x=520, y=150)
+    tr = Label(screen, text='Enter Student Email-ID: ', font=('Arial', 20), fg='red', background="bisque")
+    tr.place(x=30, y=200)
+    c1 = Entry(screen, font=('Arial', 20), width=10)
+    c1.place(x=350, y=200)
+    b = Button(screen, text='OK', font=('Arial', 20), fg='red', background="white", command = Senddata)
+    b.place(x=520, y=200)
+    tr = Label(screen, text='Start Face Recognization: ', font=('Arial', 20), fg='red', background="bisque")
+    tr.place(x=30, y=250)
+    b = Button(screen, text='OK', font=('Arial', 20), fg='red', background="white", command = Communicate)
+    b.place(x=430, y=250)
+    
+def Senddata():
+    Print("Send the data to the database")
 
 def see():
-    screen = Tk()
-    screen.title("Student Previous Data")
-    screen.geometry('600x600')
+    screen1 = Tk()
+    screen1.title("Student Previous Data")
+    screen1.geometry('600x600')
     
+    tw = Label(screen1, text='Student Name: ', font=('Arial', 20), fg='red')
+    tw.place(x=50, y=300)
+    te = Label(screen1, text='Student Name', font=('Arial', 20), fg='red')
+    te.place(x=260, y=300)
+    tr = Label(screen1, text='Student ID: ', font=('Arial', 20), fg='red')
+    tr.place(x=50, y=340)
+    tt = Label(screen1, text='Student ID', font=('Arial', 20), fg='red')
+    tt.place(x=260, y=340)
+    ty = Label(screen1, text='Display previous data: ', font=('Arial', 20), fg='red')
+    ty.place(x=50, y=380)
+    tu = Label(screen1, text='Display previous data', font=('Arial', 20), fg='red')
+    tu.place(x=260, y=380)
+    
+    
+def Communicate():
+    print("send command to raspberry pi")
+
+def Communicate1():
+    print("send command1 to raspberry pi")
+
+def Communicate2():
+    print("send command2 to raspberry pi")
+
+def Communicate3():
+    print("send command3 to raspberry pi")
 
 sc1 = StringVar('')
 t1 = Label(screen, text='Health Monitoring System', font=('Arial', 26), fg='red', background="bisque")
@@ -112,5 +168,9 @@ c1 = Entry(screen, font=('Arial', 14), width=10)
 c1.place(x=310, y=213)
 b = Button(screen, text='OK', font=('Arial', 14), fg='red', background="white", command = func)
 b.place(x=430, y=210)
+t5 = Label(screen, text='Add New Student ', font=('Arial', 14),  fg='black', background="bisque")
+t5.place(x=235, y=315)
+b = Button(screen, text='OK', font=('Arial', 14), fg='red', background="white", command = Addnew)
+b.place(x=430, y=310)
 
 
