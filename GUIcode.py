@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 from tkinter.ttk import Combobox
 import random
@@ -6,6 +7,7 @@ from tkinter import messagebox
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PIL import Image, ImageTk
 
 screen = Tk()
 screen.title("Health Monitoring System")
@@ -16,35 +18,47 @@ def func():
     myvar = c1.get()
     if myvar.isdigit() == True:    
         if len(str((myvar))) <= 10 and len(str((myvar))) > 9:
-            screen = Tk()
-            screen.title("Student Data")
-            screen.geometry('600x600')
-            ta = Label(screen, text='Displaying Student Data', font=('Arial', 26), fg='red', background="bisque")
+            screen1 = Tk()
+            screen1.title("Student Data")
+            screen1.geometry('600x600')
+            ta = Label(screen1, text='Displaying Student Data', font=('Arial', 26), fg='red', background="bisque")
             ta.place(x=120, y=0)
-            tq = Label(screen, text='Student Picture', font=('Arial', 26), fg='red')
-            tq.place(x=160, y=200)
-            tw = Label(screen, text='Student Name: ', font=('Arial', 20), fg='red')
+            
+            frame = Frame(screen1, width=600, height=400)
+            frame.pack()
+            frame.place(anchor='center', relx=0.5, rely=0.5)
+
+            # Create an object of tkinter ImageTk
+            img = ImageTk.PhotoImage(Image.open("images.jpg"))
+
+            # Create a Label Widget to display the text or Image
+            label = Label(image = img)
+            label.pack()
+            
+            
+            
+            tw = Label(screen1, text='Student Name: ', font=('Arial', 20), fg='red')
             tw.place(x=50, y=300)
-            te = Label(screen, text='Student Name', font=('Arial', 20), fg='red')
+            te = Label(screen1, text='Student Name', font=('Arial', 20), fg='red')
             te.place(x=260, y=300)
-            tr = Label(screen, text='Student ID: ', font=('Arial', 20), fg='red')
+            tr = Label(screen1, text='Student ID: ', font=('Arial', 20), fg='red')
             tr.place(x=50, y=340)
-            tt = Label(screen, text='Student ID', font=('Arial', 20), fg='red')
+            tt = Label(screen1, text='Student ID', font=('Arial', 20), fg='red')
             tt.place(x=260, y=340)
-            ty = Label(screen, text='Guadian mail: ', font=('Arial', 20), fg='red')
+            ty = Label(screen1, text='Guadian mail: ', font=('Arial', 20), fg='red')
             ty.place(x=50, y=380)
-            tu = Label(screen, text='Guadian mail', font=('Arial', 20), fg='red')
+            tu = Label(screen1, text='Guadian mail', font=('Arial', 20), fg='red')
             tu.place(x=260, y=380)
-            ti = Label(screen, text='Start Checkup: ', font=('Arial', 20), fg='red')
+            ti = Label(screen1, text='Start Checkup: ', font=('Arial', 20), fg='red')
             ti.place(x=50, y=420)
-            il = Button(screen, text='Start',font=('Arial', 16), fg='red', background="white", command = start)
+            il = Button(screen1, text='Start',font=('Arial', 16), fg='red', background="white", command = start)
             il.place(x=260, y=420)
-            ts = Label(screen, text='Previous Data: ', font=('Arial', 20), fg='red')
+            ts = Label(screen1, text='Previous Data: ', font=('Arial', 20), fg='red')
             ts.place(x=50, y=460)
-            ig = Button(screen, text='See',font=('Arial', 16), fg='red', background="white", command = see)
+            ig = Button(screen1, text='See',font=('Arial', 16), fg='red', background="white", command = see)
             ig.place(x=260, y=460)
         elif len(str((myvar))) > 10 or len(str((myvar))) < 10:
-            messagebox.showerror("Error","Entered ID is Invalid")
+            messagebox.showerror("Error","Entered ID of " + str(len(str(myvar))) + " digit is Invalid")
     elif myvar.isdigit() == False:
         messagebox.showerror("Error", "Entered ID is Invalid")
 
@@ -100,28 +114,3 @@ b = Button(screen, text='OK', font=('Arial', 14), fg='red', background="white", 
 b.place(x=430, y=210)
 
 
-
-
-
-from tkinter import *
-from PIL import Image, ImageTk
-
-mahmudul_root = Tk()
-
-mahmudul_root.geometry("1255x944")
-phot = PhotoImage(file="1.png")
-
-# For Jpg Images
-
-image = Image.open("images.jpg")
-photo = ImageTk.PhotoImage(image)
-
-varun_label = Label(image=photo)
-varun_label.pack()
-varu_label = Label(image=phot)
-varu_label.pack()
-
-mahmudul_root.mainloop()
-
-
-sudo apt-get install python3-pil python3-pil.imagetk
