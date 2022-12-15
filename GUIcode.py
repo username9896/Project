@@ -99,3 +99,29 @@ c1.place(x=310, y=213)
 b = Button(screen, text='OK', font=('Arial', 14), fg='red', background="white", command = func)
 b.place(x=430, y=210)
 
+
+
+
+
+from tkinter import *
+from PIL import Image, ImageTk
+
+mahmudul_root = Tk()
+
+mahmudul_root.geometry("1255x944")
+phot = PhotoImage(file="1.png")
+
+# For Jpg Images
+
+image = Image.open("images.jpg")
+photo = ImageTk.PhotoImage(image)
+
+varun_label = Label(image=photo)
+varun_label.pack()
+varu_label = Label(image=phot)
+varu_label.pack()
+
+mahmudul_root.mainloop()
+
+
+sudo apt-get install python3-pil python3-pil.imagetk
