@@ -41,8 +41,8 @@ Mainscreen = Tk()
 Mainscreen.title("Health Monitoring System")
 Mainscreen.configure(background="bisque")
 
-width = 600
-height = 600
+width = 1200
+height = 900
 screen_width = Mainscreen.winfo_screenwidth()
 screen_height = Mainscreen.winfo_screenheight()
 x = (screen_width/2) - (width/2)
@@ -56,7 +56,7 @@ Mainscreen.geometry('%dx%d+%d+%d' % (width, height, x, y))
 def ExistingStudent():
     myvar = c1.get()
     if myvar.isdigit() == True:    
-        if len(str((myvar))) <= 10 and len(str((myvar))) > 9:
+        if len(str((myvar))) <= 10 and len(str((myvar))) > 9 :
             entry = cursor.execute(f"SELECT * from STUDENT where STU_ID = {myvar}")
             conn.commit()
             if entry != 0:
@@ -132,16 +132,23 @@ def ExistingStudent():
             cursor.execute(f"SELECT TEMP from SENSORDATA where STU_ID = {myvar}")
             fetchtemp = cursor.fetchone()
             sen2_out = Label(screen1, text=fetchtemp, font=('Arial', 20), fg='red')
-
             sen2_out.place(x=260, y=420)
+            
             sen3 = Label(screen1, text='PULSE: ', font=('Arial', 20), fg='red')
             sen3.place(x=50, y=460)
             cursor.execute(f"SELECT PULSE from SENSORDATA where STU_ID = {myvar}")
             fetchpulse = cursor.fetchone()
             sen3_out = Label(screen1, text=fetchpulse, font=('Arial', 20), fg='red')
             sen3_out.place(x=260, y=460)
+            
+            sen3 = Label(screen1, text='Time at Checkup: ', font=('Arial', 20), fg='red')
+            sen3.place(x=50, y=460)
+            cursor.execute(f"SELECT RECORD_DATE from SENSORDATA where STU_ID = {myvar}")
+            fetchtime = cursor.fetchone()
+            sen3_out = Label(screen1, text=fetchtime, font=('Arial', 20), fg='red')
+            sen3_out.place(x=260, y=460)
             entry3 = Button(screen1, text = 'Back', font=('Arial', 20), width=10, command = screen1.destroy)
-            entry3.place(x=250, y=500)
+            entry3.place(x=250, y=540)
 
         # ==================================== SENSOR's START READING ==============================================
         def StartReading():
@@ -239,7 +246,7 @@ def Addnewfin():
     inputname = Label(NewStudentscreen, text='Do You Want to Add Finger Print?', font=('Arial', 26), fg='red', background="bisque")
     inputname.place(x=30, y=100)
     submitbutton = Button(NewStudentscreen, text='Yes', font=('Arial', 24), fg='red', background="white", command =lambda: [fun(), NewStudentscreen.destroy()])
-    submitbutton.place(x=300, y=320)
+    submitbutton.place(x=270, y=320)
     submitbutton1 = Button(NewStudentscreen, text='No', font=('Arial', 24), fg='red', background="white", command = NewStudentscreen.destroy)
     submitbutton1.place(x=350, y=320)
     
@@ -468,23 +475,23 @@ def fun():
     
 # ===============================****** MAIN SCREEN *******================================================
 sc1 = StringVar('')
-t1 = Label(Mainscreen, text='Health Monitoring System', font=('Arial', 26), fg='red', background="bisque")
-t1.place(x=110, y=0)
-t2 = Label(Mainscreen, text='Start with Finger print:', font=('Arial', 14), background="bisque")
+t1 = Label(Mainscreen, text='Health Monitoring System', font=('Arial', 50), fg='red', background="bisque")
+t1.place(x=210, y=0)
+t2 = Label(Mainscreen, text='Start with Finger print:', font=('Arial', 35), background="bisque")
 t2.place(x=120, y=150)
-il = Button(Mainscreen, text='Start',font=('Arial', 14), fg='red', background="white", command = fun)
-il.place(x=330, y=145)
-t3 = Label(Mainscreen, text='OR', font=('Arial', 14),  fg='red', background="bisque")
+il = Button(Mainscreen, text='Start',font=('Arial', 35), fg='red', background="white", command = fun)
+il.place(x=330, y=145
+t3 = Label(Mainscreen, text='OR', font=('Arial', 35),  fg='red', background="bisque")
 t3.place(x=250, y=200)
-t4 = Label(Mainscreen, text='Enter Student ID: ', font=('Arial', 14),  fg='black', background="bisque")
+t4 = Label(Mainscreen, text='Enter Student ID: ', font=('Arial', 35),  fg='black', background="bisque")
 t4.place(x=120, y=250)
-c1 = Entry(Mainscreen, font=('Arial', 14), width=10)
+c1 = Entry(Mainscreen, font=('Arial', 35), width=10)
 c1.place(x=280, y=250)
-b = Button(Mainscreen, text='OK', font=('Arial', 14), fg='red', background="white", command = ExistingStudent)
+b = Button(Mainscreen, text='OK', font=('Arial', 35), fg='red', background="white", command = ExistingStudent)
 b.place(x=400, y=245)
-t5 = Label(Mainscreen, text='Add New Student ', font=('Arial', 14),  fg='black', background="bisque")
+t5 = Label(Mainscreen, text='Add New Student ', font=('Arial', 35),  fg='black', background="bisque")
 t5.place(x=120, y=295)
-b = Button(Mainscreen, text='OK', font=('Arial', 14), fg='red', background="white", command = Addnew)
+b = Button(Mainscreen, text='OK', font=('Arial', 35), fg='red', background="white", command = Addnew)
 b.place(x=300, y=290)
 
 
@@ -554,4 +561,3 @@ Mainscreen.mainloop()
 # #exitting
 # cursor.close()
 # conn.close()
-
