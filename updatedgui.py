@@ -21,6 +21,28 @@ from digitalio import DigitalInOut, Direction
 import adafruit_fingerprint
 import serial
 
+from ifttt_webhook import IftttWebhook
+
+# IFTTT Webhook key, available under "Documentation"
+# at  https://ifttt.com/maker_webhooks/.
+IFTTT_KEY = 'b-F4U7NhssgKf42FkeqKxdSLYC5zTdTa31AS46cxJ8D'
+
+# Create an instance of the IftttWebhook class,
+# passing the IFTTT Webhook key as parameter.
+ifttt = IftttWebhook(IFTTT_KEY)
+
+# Trigger the IFTTT event defined by event_name with the content
+# defined by the value1, value2 and value3 parameters.
+ifttt.trigger('senddata', value1='value1', value2='value2', value3='value3')
+
+
+event_values = ('vickykumar3611@gmail.com', '1', '2')
+# Unpack the tuple / list in the method call
+ifttt.trigger('senddata', *event_values)
+
+ifttt.gmail(to='vickykumar3611@gmail.com', subject='This is the subject', body='This is the email body.')
+
+
 # import cv2
 # import numpy as np 
 # import face_recognition
@@ -177,6 +199,12 @@ def ExistingStudent():
             tq.place(x=400, y=250)
             entry3 = Button(Sensorscreen, text = 'Back', font=('Arial', 20), width=10, command = sensorscreen.destroy)
             entry3.place(x=250, y=500)
+	
+	    ifttt.trigger('Senddata', value1='value1', value2='value2', value3='value3')
+	    event_values = ('vickykumar3611@gmail.com', '1', '2')
+	    # Unpack the tuple / list in the method call
+	    ifttt.trigger('senddata', *event_values)
+	    ifttt.gmail(to='vickykumar3611@gmail.com', subject='This is the subject', body='This is the email body.')
         
         StartButton1 = Button(screen1, text='Start',font=('Arial', 16), fg='red', background="white", command = StartReading)
         StartButton1.place(x=260, y=420)
